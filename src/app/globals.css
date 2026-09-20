@@ -1,26 +1,160 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --jv: #04aa6d;
+  --jv-dark: #059862;
+  --jv-darker: #037c50;
+  --jv-ink: #1d2b36;
+  --jv-muted: #5a6a75;
+  --jv-line: #d4d4d4;
+  --jv-code: #e7e9eb;
+  --jv-bg: #ffffff;
+  --jv-panel: #f1f1f1;
+  --jv-ad: #fff7e0;
+  --header-h: 56px;
+  --greenbar-h: 44px;
+}
+
+html.dark {
+  --jv-ink: #e8eef2;
+  --jv-muted: #9bb0bc;
+  --jv-line: #31404a;
+  --jv-code: #1b2830;
+  --jv-bg: #0f171c;
+  --jv-panel: #152028;
+  --jv-ad: #2a2414;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-jv: var(--jv);
+  --color-jv-dark: var(--jv-dark);
+  --color-jv-darker: var(--jv-darker);
+  --color-ink: var(--jv-ink);
+  --color-muted: var(--jv-muted);
+  --color-line: var(--jv-line);
+  --color-code: var(--jv-code);
+  --color-panel: var(--jv-panel);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--jv-bg);
+  color: var(--jv-ink);
+  font-family: var(--font-geist-sans), "Segoe UI", Arial, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.prose-jv h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin: 1.6rem 0 0.7rem;
+  color: var(--jv-ink);
+}
+
+.prose-jv h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1.3rem 0 0.5rem;
+}
+
+.prose-jv p {
+  margin: 0.85rem 0;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.prose-jv a {
+  color: #036c4e;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+html.dark .prose-jv a {
+  color: #5ee0b0;
+}
+
+.prose-jv ul,
+.prose-jv ol {
+  margin: 0.6rem 0 0.9rem 1.2rem;
+  line-height: 1.65;
+}
+
+.prose-jv li {
+  margin: 0.25rem 0;
+}
+
+.prose-jv code {
+  background: var(--jv-code);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-family: var(--font-geist-mono), Consolas, monospace;
+  font-size: 0.92em;
+}
+
+.prose-jv table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.prose-jv th,
+.prose-jv td {
+  border: 1px solid var(--jv-line);
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose-jv th {
+  background: var(--jv-panel);
+}
+
+.tok-k {
+  color: #9d174d;
+  font-weight: 600;
+}
+.tok-s {
+  color: #047857;
+}
+.tok-c {
+  color: #6b7280;
+  font-style: italic;
+}
+html.dark .tok-k {
+  color: #fb7185;
+}
+html.dark .tok-s {
+  color: #34d399;
+}
+
+.example-box {
+  background: var(--jv-code);
+  border-left: 4px solid var(--jv);
+  padding: 12px 16px;
+  margin: 16px 0;
+}
+
+.green-btn {
+  background: var(--jv);
+  color: white;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 10px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.green-btn:hover {
+  background: var(--jv-dark);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #b8c0c4;
+  border-radius: 8px;
 }
