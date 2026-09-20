@@ -17,10 +17,10 @@ export default function CertificatesPage() {
     canvas.height = 800;
     ctx.fillStyle = "#fbfaf6";
     ctx.fillRect(0, 0, 1200, 800);
-    ctx.strokeStyle = "#04AA6D";
-    ctx.lineWidth = 18;
+    ctx.strokeStyle = "#4c3dff";
+    ctx.lineWidth = 12;
     ctx.strokeRect(40, 40, 1120, 720);
-    ctx.fillStyle = "#04AA6D";
+    ctx.fillStyle = "#4c3dff";
     ctx.fillRect(40, 40, 1120, 90);
     ctx.fillStyle = "#fff";
     ctx.font = "bold 42px Georgia, serif";
@@ -39,7 +39,7 @@ export default function CertificatesPage() {
       520,
     );
     if (pro) {
-      ctx.fillStyle = "#04AA6D";
+      ctx.fillStyle = "#4c3dff";
       ctx.font = "bold 20px Georgia, serif";
       ctx.fillText("JOEVEN PRO", 80, 700);
     }
@@ -51,7 +51,7 @@ export default function CertificatesPage() {
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-10">
-      <h1 className="text-4xl font-extrabold">Certificates</h1>
+      <h1 className="font-display text-4xl tracking-tight">Certificates</h1>
       <p className="mt-3 text-muted">
         Pass a track quiz at 80%+. Certificates are generated in your browser
         (PNG). Add your name as you want it printed.
@@ -59,7 +59,7 @@ export default function CertificatesPage() {
       <label className="mt-6 block text-sm font-semibold">
         Name on certificate
         <input
-          className="mt-1 w-full rounded-md border border-line px-3 py-2 font-normal"
+          className="mt-1 w-full rounded-full border border-line bg-panel px-4 py-2 font-normal"
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Your name"
@@ -72,7 +72,7 @@ export default function CertificatesPage() {
           return (
             <li
               key={t.slug}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-line p-4"
+              className="flex flex-wrap items-center justify-between gap-3 card p-4"
             >
               <div>
                 <p className="font-bold">{t.title}</p>
@@ -86,7 +86,7 @@ export default function CertificatesPage() {
                 type="button"
                 disabled={!ok}
                 onClick={() => download(t.title, score)}
-                className="green-btn disabled:opacity-40"
+                className="btn disabled:opacity-40"
               >
                 Download PNG
               </button>

@@ -36,46 +36,53 @@ export default async function ProjectPartPage({
   const blocks = hydratePart(part);
 
   return (
-    <main className="mx-auto max-w-[820px] px-5 py-10">
+    <main className="mx-auto max-w-[42rem] px-5 py-14">
       <p className="text-sm text-muted">
-        <Link href="/projects">Projects</Link> /{" "}
-        <Link href={`/projects/${project.slug}`}>{project.title}</Link> / Part{" "}
-        {index + 1}
+        <Link href="/projects" className="hover:text-ink">
+          Projects
+        </Link>
+        <span className="mx-2 text-line">/</span>
+        <Link href={`/projects/${project.slug}`} className="hover:text-ink">
+          {project.title}
+        </Link>
+        <span className="mx-2 text-line">/</span>
+        Part {index + 1}
       </p>
-      <h1 className="mt-2 text-4xl font-extrabold">{part.title}</h1>
-      <p className="mt-3 text-lg text-muted">{part.summary}</p>
-      <div className="mt-6">
+      <h1 className="font-display mt-3 text-4xl tracking-tight">{part.title}</h1>
+      <p className="mt-3 text-lg leading-8 text-muted">{part.summary}</p>
+      <div className="mt-8">
         <LessonBlocks
           blocks={blocks}
           quizPrefix={`project/${project.slug}/${part.slug}`}
         />
       </div>
-      <div className="mt-10 flex flex-wrap gap-3">
+      <div className="mt-12 grid gap-3 sm:grid-cols-2">
         {prev ? (
           <Link
             href={`/projects/${project.slug}/${prev.slug}`}
-            className="rounded-md border border-line px-4 py-3 font-bold"
+            className="card p-4 hover:border-jv/40"
           >
-            ← {prev.title}
+            <p className="text-xs text-muted">Previous</p>
+            <p className="mt-1 font-semibold">{prev.title}</p>
           </Link>
         ) : (
-          <Link
-            href={`/projects/${project.slug}`}
-            className="rounded-md border border-line px-4 py-3 font-bold"
-          >
-            ← Project home
+          <Link href={`/projects/${project.slug}`} className="card p-4">
+            <p className="text-xs text-muted">Project</p>
+            <p className="mt-1 font-semibold">Overview</p>
           </Link>
         )}
         {next ? (
           <Link
             href={`/projects/${project.slug}/${next.slug}`}
-            className="green-btn ml-auto"
+            className="card border-jv/30 bg-jv/5 p-4"
           >
-            Next: {next.title} →
+            <p className="text-xs text-jv-dark">Up next</p>
+            <p className="mt-1 font-semibold">{next.title}</p>
           </Link>
         ) : (
-          <Link href="/projects" className="green-btn ml-auto">
-            All projects →
+          <Link href="/projects" className="card border-jv/30 bg-jv/5 p-4">
+            <p className="text-xs text-jv-dark">Done</p>
+            <p className="mt-1 font-semibold">All projects</p>
           </Link>
         )}
       </div>

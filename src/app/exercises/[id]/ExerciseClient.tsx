@@ -14,20 +14,20 @@ export function ExerciseClient({ ex }: { ex: Exercise }) {
       <p className="text-sm text-muted">
         <Link href="/exercises">Exercises</Link> / {ex.track}
       </p>
-      <h1 className="mt-2 text-3xl font-extrabold">{ex.title}</h1>
+      <h1 className="font-display mt-2 text-3xl tracking-tight">{ex.title}</h1>
       <p className="mt-3 text-lg leading-7">{ex.prompt}</p>
       <TryIt code={ex.starter} lang={ex.lang} tall />
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
-          className="rounded-md border border-line px-4 py-2 font-semibold"
+          className="btn-ghost"
           onClick={() => setHint((v) => !v)}
         >
           {hint ? "Hide hint" : "Show hint"}
         </button>
         <button
           type="button"
-          className="green-btn"
+          className="btn"
           onClick={() => setShow((v) => !v)}
         >
           {show ? "Hide solution" : "Show solution"}

@@ -15,26 +15,24 @@ export default function Og() {
           flexDirection: "column",
           justifyContent: "center",
           padding: 80,
-          background: "#1d2b36",
-          color: "white",
+          background: "#17141f",
+          color: "#f7f3eb",
         }}
       >
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: 16,
-            color: "#04AA6D",
+            color: "#9d94ff",
             fontSize: 28,
-            fontWeight: 700,
+            fontWeight: 600,
           }}
         >
-          JOEVEN.COM
+          Joeven academy
         </div>
-        <div style={{ fontSize: 72, fontWeight: 800, marginTop: 20, lineHeight: 1.1 }}>
-          Learn Autonomous AI Agents
+        <div style={{ fontSize: 68, fontWeight: 600, marginTop: 18, lineHeight: 1.12 }}>
+          Learn to build agents that actually do the work.
         </div>
-        <div style={{ fontSize: 28, marginTop: 24, color: "#c9d6de" }}>
+        <div style={{ fontSize: 26, marginTop: 28, color: "#b2abbf" }}>
           Python · Math · LLMs · Tools · RAG · Production
         </div>
       </div>

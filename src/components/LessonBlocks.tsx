@@ -52,15 +52,15 @@ export function LessonBlocks({
         if (b.type === "callout") {
           const colors =
             b.kind === "warning"
-              ? "border-amber-400 bg-amber-50 dark:bg-amber-950/30"
+              ? "border-orange-300 bg-orange-50 dark:border-orange-800 dark:bg-orange-950/30"
               : b.kind === "tip"
-                ? "border-jv bg-emerald-50 dark:bg-emerald-950/30"
-                : "border-sky-400 bg-sky-50 dark:bg-sky-950/30";
-          const label = b.kind === "warning" ? "Warning" : b.kind === "tip" ? "Tip" : "Note";
+                ? "border-jv/40 bg-jv/5"
+                : "border-line bg-code/50";
+          const label = b.kind === "warning" ? "Watch out" : b.kind === "tip" ? "Tip" : "Note";
           return (
             <blockquote
               key={i}
-              className={`my-4 rounded-md border-l-4 px-4 py-3 ${colors}`}
+              className={`my-5 rounded-2xl border px-4 py-3 ${colors}`}
             >
               <strong className="mr-2">{label}:</strong>
               <span dangerouslySetInnerHTML={{ __html: b.html }} />

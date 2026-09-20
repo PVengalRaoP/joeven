@@ -36,7 +36,7 @@ export default function QuizClient({ track }: { track: Track }) {
       <p className="text-sm text-muted">
         <Link href="/quiz">Quizzes</Link>
       </p>
-      <h1 className="mt-2 text-4xl font-extrabold">{track.title} Quiz</h1>
+      <h1 className="font-display mt-2 text-4xl tracking-tight">{track.title} quiz</h1>
       <p className="mt-3 text-muted">
         {items.length} questions from the {track.title} track. Score 80% or
         higher to unlock a certificate.
@@ -81,8 +81,8 @@ export default function QuizClient({ track }: { track: Track }) {
           );
         })}
       </ol>
-      <button type="button" onClick={submit} className="green-btn mt-8">
-        Submit quiz »
+      <button type="button" onClick={submit} className="btn mt-8">
+        Submit quiz
       </button>
     </main>
   );

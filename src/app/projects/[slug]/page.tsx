@@ -26,29 +26,33 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project) notFound();
   return (
-    <main className="mx-auto max-w-3xl px-5 py-10">
+    <main className="mx-auto max-w-3xl px-5 py-14">
       <p className="text-sm text-muted">
-        <Link href="/projects">Projects</Link>
+        <Link href="/projects" className="hover:text-ink">
+          Projects
+        </Link>
       </p>
-      <h1 className="mt-2 text-4xl font-extrabold">{project.title}</h1>
-      <p className="mt-3 text-lg text-muted">{project.summary}</p>
+      <h1 className="font-display mt-3 text-4xl tracking-tight">{project.title}</h1>
+      <p className="mt-3 text-lg leading-8 text-muted">{project.summary}</p>
       <p className="mt-4 text-sm">
         <strong>Outcome:</strong> {project.outcome}
       </p>
       <p className="mt-1 text-sm text-muted">
         {project.level} · {project.hours}
       </p>
-      <ol className="mt-8 divide-y divide-line rounded-lg border border-line">
+      <ol className="card mt-8 divide-y divide-line overflow-hidden">
         {project.parts.map((part, i) => (
           <li key={part.slug}>
             <Link
               href={`/projects/${project.slug}/${part.slug}`}
-              className="flex gap-4 px-4 py-3 hover:bg-panel"
+              className="flex gap-4 px-4 py-4 hover:bg-code/40"
             >
-              <span className="font-mono text-muted">{i + 1}</span>
+              <span className="font-mono text-sm text-muted">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <div>
-                <p className="font-bold">{part.title}</p>
-                <p className="text-sm text-muted">{part.summary}</p>
+                <p className="font-semibold">{part.title}</p>
+                <p className="mt-1 text-sm text-muted">{part.summary}</p>
               </div>
             </Link>
           </li>
@@ -56,9 +60,9 @@ export default async function ProjectPage({
       </ol>
       <Link
         href={`/projects/${project.slug}/${project.parts[0].slug}`}
-        className="green-btn mt-8"
+        className="btn mt-8"
       >
-        Start project »
+        Start this project
       </Link>
     </main>
   );

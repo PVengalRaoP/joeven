@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Terms of Use" };
 export default function TermsPage() {
   return (
     <main className="prose-jv mx-auto max-w-3xl px-5 py-10">
-      <h1 className="text-4xl font-extrabold">Terms of Use</h1>
+      <h1 className="font-display text-4xl tracking-tight">Terms of Use</h1>
       <p>Last updated: 20 September 2026.</p>
       <p>
         Joeven tutorials are educational. Code samples are provided as-is, for

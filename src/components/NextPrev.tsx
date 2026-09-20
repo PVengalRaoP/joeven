@@ -18,38 +18,38 @@ export function NextPrev({
   const { complete } = useProgress();
 
   return (
-    <div className="mt-10 flex flex-wrap gap-3">
+    <div className="mt-12 grid gap-3 sm:grid-cols-2">
       {prev ? (
         <Link
           href={`/tutorials/${trackSlug}/${prev.slug}`}
-          className="rounded-md border border-line px-4 py-3 font-bold hover:bg-panel"
+          className="card p-4 hover:border-jv/40"
         >
-          ← {prev.title}
+          <p className="text-xs text-muted">Previous</p>
+          <p className="mt-1 font-semibold">{prev.title}</p>
         </Link>
       ) : (
-        <Link
-          href="/tutorials"
-          className="rounded-md border border-line px-4 py-3 font-bold hover:bg-panel"
-        >
-          ← All tutorials
+        <Link href="/tutorials" className="card p-4 hover:border-jv/40">
+          <p className="text-xs text-muted">Curriculum</p>
+          <p className="mt-1 font-semibold">All tracks</p>
         </Link>
       )}
-      {next && (
+      {next ? (
         <Link
           href={`/tutorials/${trackSlug}/${next.slug}`}
           onClick={() => complete(lesson.id)}
-          className="green-btn ml-auto"
+          className="card border-jv/30 bg-jv/5 p-4"
         >
-          Next: {next.title} →
+          <p className="text-xs text-jv-dark">Up next</p>
+          <p className="mt-1 font-semibold">{next.title}</p>
         </Link>
-      )}
-      {!next && (
+      ) : (
         <Link
           href={`/quiz/${trackSlug}`}
           onClick={() => complete(lesson.id)}
-          className="green-btn ml-auto"
+          className="card border-jv/30 bg-jv/5 p-4"
         >
-          Take the {lesson.trackTitle} quiz →
+          <p className="text-xs text-jv-dark">Finish the track</p>
+          <p className="mt-1 font-semibold">Take the {lesson.trackTitle} quiz</p>
         </Link>
       )}
     </div>
@@ -60,13 +60,14 @@ export function CompleteToggle({ id }: { id: string }) {
   const { completed, complete, uncomplete } = useProgress();
   const done = completed.includes(id);
   return (
-    <label className="flex items-center gap-2 text-sm text-muted">
+    <label className="inline-flex cursor-pointer items-center gap-2 text-sm text-muted">
       <input
         type="checkbox"
+        className="h-4 w-4 rounded border-line"
         checked={done}
         onChange={() => (done ? uncomplete(id) : complete(id))}
       />
-      Mark as complete
+      {done ? "Completed" : "Mark complete"}
     </label>
   );
 }

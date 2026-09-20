@@ -10,69 +10,86 @@ export function Footer() {
   if (pathname.startsWith("/try/")) return null;
 
   return (
-    <footer className="mt-auto border-t border-line bg-[#1d2b36] text-white">
-      <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:grid-cols-4">
+    <footer className="mt-auto border-t border-line">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
         <div>
-          <p className="text-lg font-bold">{site.name}</p>
-          <p className="mt-2 text-sm text-white/70">
-            A tutorial academy for autonomous AI agents — Python, math, models,
-            tools, and production.
+          <p className="font-display text-2xl">{site.name}</p>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            A calm place to learn autonomous agents — from first Python
+            function to a production loop.
           </p>
         </div>
         <div>
-          <p className="font-semibold">Learn</p>
-          <ul className="mt-2 space-y-1 text-sm text-white/80">
+          <p className="text-sm font-semibold">Learn</p>
+          <ul className="mt-3 space-y-2 text-sm text-muted">
             <li>
-              <Link href="/tutorials">Tutorials</Link>
+              <Link href="/tutorials" className="hover:text-ink">
+                Curriculum
+              </Link>
             </li>
             <li>
-              <Link href="/projects">Projects</Link>
+              <Link href="/path" className="hover:text-ink">
+                Learning path
+              </Link>
             </li>
             <li>
-              <Link href="/exercises">Exercises</Link>
+              <Link href="/projects" className="hover:text-ink">
+                Projects
+              </Link>
             </li>
             <li>
-              <Link href="/reference">Reference</Link>
+              <Link href="/exercises" className="hover:text-ink">
+                Practice
+              </Link>
             </li>
             <li>
-              <Link href="/certificates">Certificates</Link>
+              <Link href="/certificates" className="hover:text-ink">
+                Certificates
+              </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="font-semibold">Company</p>
-          <ul className="mt-2 space-y-1 text-sm text-white/80">
+          <p className="text-sm font-semibold">Company</p>
+          <ul className="mt-3 space-y-2 text-sm text-muted">
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/about" className="hover:text-ink">
+                About
+              </Link>
             </li>
             <li>
-              <Link href="/pricing">Pricing</Link>
+              <Link href="/pricing" className="hover:text-ink">
+                Pricing
+              </Link>
             </li>
             <li>
-              <Link href="/jobs">Jobs</Link>
+              <Link href="/jobs" className="hover:text-ink">
+                Jobs
+              </Link>
             </li>
             <li>
-              <Link href="/advertise">Advertise</Link>
+              <Link href="/privacy" className="hover:text-ink">
+                Privacy
+              </Link>
             </li>
             <li>
-              <Link href="/privacy">Privacy</Link>
-            </li>
-            <li>
-              <Link href="/terms">Terms</Link>
+              <Link href="/terms" className="hover:text-ink">
+                Terms
+              </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="font-semibold">Newsletter</p>
-          <p className="mt-2 text-sm text-white/70">
-            One practical agent pattern a week. No spam.
+          <p className="text-sm font-semibold">Weekly note</p>
+          <p className="mt-3 text-sm leading-6 text-muted">
+            One agent pattern that survives contact with production.
           </p>
-          <NewsletterForm dark />
+          <NewsletterForm />
         </div>
       </div>
-      <div className="border-t border-white/10 px-5 py-4 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} Joeven · {site.domain.replace("https://", "")} ·{" "}
-        <a href={site.github} className="underline">
+      <div className="border-t border-line px-5 py-5 text-center text-xs text-muted">
+        © {new Date().getFullYear()} Joeven ·{" "}
+        <a href={site.github} className="underline decoration-line underline-offset-2">
           GitHub
         </a>
       </div>

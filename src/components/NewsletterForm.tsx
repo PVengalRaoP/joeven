@@ -31,15 +31,15 @@ export function NewsletterForm({ dark = false }: { dark?: boolean }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@company.com"
-          className={`min-w-0 flex-1 rounded-md border px-3 py-2 text-sm text-ink ${
-            dark ? "border-white/20 bg-white" : "border-line bg-white"
+          className={`min-w-0 flex-1 rounded-full border px-4 py-2 text-sm text-ink ${
+            dark ? "border-white/20 bg-white" : "border-line bg-panel"
           }`}
         />
-        <button className="green-btn shrink-0 text-sm" type="submit">
+        <button className="btn shrink-0 text-sm" type="submit">
           Join
         </button>
       </div>
-      {msg && <p className="mt-2 text-xs opacity-80">{msg}</p>}
+      {msg && <p className="mt-2 text-xs text-muted">{msg}</p>}
     </form>
   );
 }

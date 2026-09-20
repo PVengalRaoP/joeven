@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Privacy Policy" };
 export default function PrivacyPage() {
   return (
     <main className="prose-jv mx-auto max-w-3xl px-5 py-10">
-      <h1 className="text-4xl font-extrabold">Privacy Policy</h1>
+      <h1 className="font-display text-4xl tracking-tight">Privacy Policy</h1>
       <p>Last updated: 20 September 2026. Site: {site.domain}</p>
       <h2>What we store in your browser</h2>
       <p>

@@ -1,4 +1,4 @@
-import { Source_Sans_3, Source_Code_Pro } from "next/font/google";
+import { Fraunces, Outfit, IBM_Plex_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -6,15 +6,23 @@ import { ProgressProvider } from "@/components/ProgressProvider";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const sans = Source_Sans_3({
-  variable: "--font-geist-sans",
+const display = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const sans = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
 
-const mono = Source_Code_Pro({
-  variable: "--font-geist-mono",
+const mono = IBM_Plex_Mono({
+  variable: "--font-ibm",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -55,7 +63,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${mono.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col antialiased">
         <ProgressProvider>
           <Header />

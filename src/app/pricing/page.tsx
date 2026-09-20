@@ -8,21 +8,18 @@ export default function PricingPage() {
   const { pro, unlockPro } = useProgress();
 
   return (
-    <main className="mx-auto max-w-5xl px-5 py-10">
-      <h1 className="text-4xl font-extrabold">Pricing</h1>
-      <p className="mt-3 max-w-2xl text-lg text-muted">
-        The curriculum is free. Joeven earns money the same way a tutorial
-        academy should: optional Pro, sponsors, and a job board — not paywalls
-        on the basics.
+    <main className="mx-auto max-w-5xl px-5 py-14">
+      <h1 className="font-display text-4xl tracking-tight md:text-5xl">Pricing</h1>
+      <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
+        The academy is free. Optional Pro, partners, and a job board keep the
+        lights on — not a paywall on the basics.
       </p>
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {plans.map((p) => (
           <div
             key={p.id}
             id={p.id}
-            className={`rounded-2xl border p-6 ${
-              p.featured ? "border-jv shadow-lg" : "border-line"
-            }`}
+            className={`card p-6 ${p.featured ? "border-jv/50 ring-2 ring-jv/20" : ""}`}
           >
             <h2 className="text-xl font-bold">{p.name}</h2>
             <p className="mt-3 text-4xl font-extrabold">
@@ -38,12 +35,12 @@ export default function PricingPage() {
               <button
                 type="button"
                 onClick={unlockPro}
-                className="green-btn mt-6 w-full justify-center"
+                className="btn mt-6 w-full"
               >
                 {pro ? "Pro is on in this browser" : "Activate Pro demo"}
               </button>
             ) : (
-              <Link href={p.href} className="green-btn mt-6 w-full justify-center">
+              <Link href={p.href} className="btn mt-6 w-full">
                 {p.cta}
               </Link>
             )}
@@ -55,8 +52,8 @@ export default function PricingPage() {
         when you are ready to take live payments. The demo unlock is for this
         browser only (hides ads, Pro badge on certificates).
       </p>
-      <section className="mt-12 rounded-xl border border-line p-6">
-        <h2 className="text-2xl font-bold">Other revenue</h2>
+      <section className="card mt-12 p-6">
+        <h2 className="text-2xl font-semibold">Other revenue</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6">
           <li>
             <Link href="/advertise" className="font-semibold text-jv-darker">

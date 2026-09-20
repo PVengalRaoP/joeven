@@ -22,17 +22,20 @@ export default async function TryPage({
   if (!lesson || !tryit || tryit.type !== "tryit") notFound();
 
   return (
-    <div className="flex h-screen flex-col bg-[#1d2b36] text-white">
-      <div className="flex items-center gap-3 bg-jv px-3 py-2">
-        <Link href={`/tutorials/${track}/${slug}`} className="font-bold">
-          ← Back to lesson
+    <div className="flex h-screen flex-col bg-[#121018] text-zinc-100">
+      <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
+        <Link
+          href={`/tutorials/${track}/${slug}`}
+          className="rounded-full px-3 py-1 text-sm text-zinc-300 hover:bg-white/10"
+        >
+          ← Lesson
         </Link>
-        <span className="text-sm opacity-90">{lesson.title} — Tryit Editor</span>
-        <Link href="/" className="ml-auto font-extrabold">
+        <span className="truncate text-sm text-zinc-400">{lesson.title}</span>
+        <Link href="/" className="ml-auto font-display text-lg">
           Joeven
         </Link>
       </div>
-      <div className="min-h-0 flex-1 bg-white text-ink">
+      <div className="min-h-0 flex-1">
         <TryIt code={tryit.code} lang={tryit.lang} split />
       </div>
     </div>

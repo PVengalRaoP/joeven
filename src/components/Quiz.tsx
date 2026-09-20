@@ -27,25 +27,25 @@ export function Quiz({
   }
 
   return (
-    <div className="my-8 rounded-lg border border-line bg-panel p-5">
-      <p className="text-xs font-bold uppercase tracking-wider text-jv-darker">
-        Exercise
+    <div className="card my-8 p-5">
+      <p className="text-xs font-medium uppercase tracking-wide text-jv-dark">
+        Check your understanding
       </p>
-      <h3 className="mt-1 text-lg font-bold">Quiz: {question}</h3>
-      <ul className="mt-3 space-y-2">
+      <h3 className="mt-1 text-lg font-semibold">{question}</h3>
+      <ul className="mt-4 space-y-2">
         {options.map((opt, i) => {
           const show = submitted;
           const isCorrect = opt.correct;
           const isPick = picked === i;
-          let cls = "border-line bg-white dark:bg-transparent";
-          if (show && isCorrect) cls = "border-jv bg-emerald-50 dark:bg-emerald-950/40";
+          let cls = "border-line bg-panel";
+          if (show && isCorrect) cls = "border-teal-500/50 bg-teal-50 dark:bg-teal-950/30";
           else if (show && isPick && !isCorrect)
-            cls = "border-red-400 bg-red-50 dark:bg-red-950/30";
-          else if (isPick) cls = "border-jv bg-emerald-50/50";
+            cls = "border-rose-400 bg-rose-50 dark:bg-rose-950/30";
+          else if (isPick) cls = "border-jv bg-jv/5";
           return (
             <li key={i}>
               <label
-                className={`flex cursor-pointer items-start gap-3 rounded-md border px-3 py-2 text-sm ${cls}`}
+                className={`flex cursor-pointer items-start gap-3 rounded-2xl border px-3 py-3 text-sm ${cls}`}
               >
                 <input
                   type="radio"
@@ -67,17 +67,17 @@ export function Quiz({
         type="button"
         onClick={submit}
         disabled={picked === null}
-        className="green-btn mt-4 text-sm disabled:opacity-50"
+        className="btn mt-4 text-sm disabled:opacity-50"
       >
-        Submit answer »
+        Check answer
       </button>
       {submitted && (
         <p className="mt-3 text-sm leading-6">
           {picked === correctIndex ? (
-            <strong className="text-jv-darker">Correct.</strong>
+            <strong className="text-teal-700 dark:text-teal-300">Correct. </strong>
           ) : (
-            <strong className="text-red-700">Not quite.</strong>
-          )}{" "}
+            <strong className="text-rose-700 dark:text-rose-300">Not quite. </strong>
+          )}
           {explain}
         </p>
       )}

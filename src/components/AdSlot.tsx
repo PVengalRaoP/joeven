@@ -14,33 +14,26 @@ export function AdSlot({
 
   const sizes =
     slot === "banner"
-      ? "min-h-[90px]"
+      ? "min-h-[72px]"
       : slot === "inarticle"
-        ? "min-h-[100px]"
-        : "min-h-[240px]";
+        ? "min-h-[88px]"
+        : "min-h-[160px]";
 
   return (
-    <aside
-      className={`rounded-md border border-dashed border-line bg-[var(--jv-ad)] p-3 text-center ${sizes} ${className}`}
-    >
-      <p className="text-[11px] uppercase tracking-wider text-muted">
-        Advertisement
+    <aside className={`card p-4 ${sizes} ${className}`}>
+      <p className="text-[11px] font-medium uppercase tracking-wide text-muted">
+        Partner
       </p>
-      <p className="mt-2 text-sm font-semibold text-ink">
-        Reach engineers who are learning to ship agents.
-      </p>
-      <p className="mt-1 text-xs text-muted">
-        Sponsor Joeven from $199 / week.{" "}
-        <a className="underline" href="/advertise">
+      <p className="mt-2 text-sm font-semibold">Tools for people shipping agents</p>
+      <p className="mt-1 text-xs leading-5 text-muted">
+        Sponsor a lesson from $199 / week.{" "}
+        <a className="underline decoration-line underline-offset-2" href="/advertise">
           Advertise
         </a>
-      </p>
-      <p className="mt-3 text-xs text-muted">
-        Learners:{" "}
-        <a className="underline" href="/pricing">
-          Go Pro
-        </a>{" "}
-        to hide ads.
+        {" · "}
+        <a className="underline decoration-line underline-offset-2" href="/pricing">
+          Hide with Pro
+        </a>
       </p>
     </aside>
   );

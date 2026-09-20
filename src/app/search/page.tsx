@@ -11,14 +11,14 @@ function Results() {
   const { lessons, projects, exercises, references } = searchContent(q);
 
   return (
-    <main className="mx-auto max-w-3xl px-5 py-10">
-      <h1 className="text-4xl font-extrabold">Search</h1>
-      <form className="mt-4">
+    <main className="mx-auto max-w-3xl px-5 py-14">
+      <h1 className="font-display text-4xl tracking-tight">Search</h1>
+      <form className="mt-5">
         <input
           name="q"
           defaultValue={q}
           placeholder="Search Python, ReAct, cosine, MCP…"
-          className="w-full rounded-full border border-line px-4 py-3"
+          className="w-full rounded-full border border-line bg-panel px-5 py-3 outline-none ring-jv/30 focus:ring-2"
         />
       </form>
       {q.length < 2 ? (

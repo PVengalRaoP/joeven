@@ -49,7 +49,7 @@ export function TryIt({
 }) {
   const original = useRef(code.trimEnd());
   const [value, setValue] = useState(code.trimEnd());
-  const [output, setOutput] = useState("Click Run to execute Python in your browser.");
+  const [output, setOutput] = useState("Run to execute this in your browser. Nothing is sent to a server.");
   const [running, setRunning] = useState(false);
   const [ready, setReady] = useState(false);
   const [err, setErr] = useState(false);
@@ -101,19 +101,17 @@ export function TryIt({
       onChange={(e) => setValue(e.target.value)}
       spellCheck={false}
       aria-label="Python editor"
-      className={`w-full resize-y rounded-md border border-line bg-white p-3 font-mono text-[13px] leading-6 text-ink outline-none focus:border-jv dark:bg-[#0b1216] ${
-        tall || split ? "min-h-[320px]" : "min-h-[180px]"
-      } ${split ? "h-full min-h-[calc(100vh-140px)] rounded-none border-0" : ""}`}
+      className={`w-full resize-y bg-transparent p-4 font-mono text-[13px] leading-6 text-ink outline-none ${
+        tall || split ? "min-h-[320px]" : "min-h-[168px]"
+      } ${split ? "h-full min-h-[calc(100vh-140px)]" : ""}`}
     />
   );
 
   const result = (
     <pre
-      className={`overflow-auto whitespace-pre-wrap rounded-md border p-3 font-mono text-[13px] leading-6 ${
-        err
-          ? "border-red-300 bg-red-50 text-red-800 dark:bg-red-950/40 dark:text-red-200"
-          : "border-line bg-[#fffef6] text-ink dark:bg-[#1b2418]"
-      } ${split ? "h-full min-h-[calc(100vh-140px)] rounded-none border-0 border-l" : "min-h-[88px]"}`}
+      className={`overflow-auto whitespace-pre-wrap p-4 font-mono text-[13px] leading-6 ${
+        err ? "text-rose-700 dark:text-rose-300" : "text-ink"
+      } ${split ? "h-full min-h-[calc(100vh-140px)] border-line md:border-l" : "min-h-[88px]"}`}
     >
       {output}
     </pre>
@@ -121,25 +119,25 @@ export function TryIt({
 
   if (split) {
     return (
-      <div className="flex h-full min-h-0 flex-col">
-        <div className="flex items-center gap-2 border-b border-line bg-jv px-3 py-2 text-white">
+      <div className="flex h-full min-h-0 flex-col bg-[#121018] text-zinc-100">
+        <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
           <button
             type="button"
             onClick={run}
             disabled={running}
-            className="rounded bg-white px-4 py-1.5 text-sm font-bold text-ink hover:bg-zinc-100 disabled:opacity-60"
+            className="rounded-full bg-white px-4 py-1.5 text-sm font-semibold text-[#121018] disabled:opacity-60"
           >
-            {running ? "Running…" : "Run ▶"}
+            {running ? "Running…" : "Run"}
           </button>
           <button
             type="button"
             onClick={() => setValue(original.current)}
-            className="rounded px-3 py-1.5 text-sm font-semibold hover:bg-white/15"
+            className="rounded-full px-3 py-1.5 text-sm text-zinc-300 hover:bg-white/10"
           >
             Reset
           </button>
-          <span className="ml-auto text-xs opacity-90">
-            {ready ? "Python ready (Pyodide)" : "Python loads on first Run"}
+          <span className="ml-auto text-xs text-zinc-400">
+            {ready ? "Python is ready" : "Python loads on first run"}
           </span>
         </div>
         <div className="grid min-h-0 flex-1 grid-cols-1 md:grid-cols-2">
@@ -151,29 +149,25 @@ export function TryIt({
   }
 
   return (
-    <div className="my-5 overflow-hidden rounded-lg border border-line">
-      <div className="flex items-center justify-between bg-[#1d2b36] px-3 py-2 text-white">
-        <span className="text-sm font-semibold">Example</span>
-        <span className="text-[11px] uppercase tracking-wide text-white/60">
-          {lang}
-        </span>
+    <div className="card my-6 overflow-hidden">
+      <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+        <span className="text-sm font-medium">Live Python</span>
+        <span className="text-xs text-muted">{lang}</span>
       </div>
-      <div className="example-box m-0 border-0 bg-[var(--jv-code)]">
-        {editor}
-        <div className="mt-2 flex flex-wrap gap-2">
-          <button type="button" onClick={run} disabled={running} className="green-btn text-sm">
-            {running ? "Running…" : "Try it Yourself »"}
-          </button>
-          <button
-            type="button"
-            onClick={() => setValue(original.current)}
-            className="rounded-md border border-line bg-white px-3 py-2 text-sm font-semibold dark:bg-transparent"
-          >
-            Reset
-          </button>
-        </div>
+      {editor}
+      <div className="flex flex-wrap gap-2 border-t border-line px-4 py-3">
+        <button type="button" onClick={run} disabled={running} className="btn text-sm">
+          {running ? "Running…" : "Run code"}
+        </button>
+        <button
+          type="button"
+          onClick={() => setValue(original.current)}
+          className="btn-ghost text-sm"
+        >
+          Reset
+        </button>
       </div>
-      <div className="border-t border-line bg-white px-3 py-2 text-xs font-semibold uppercase tracking-wide text-muted dark:bg-transparent">
+      <div className="border-t border-line bg-code/60 px-4 py-2 text-xs font-medium text-muted">
         Output
       </div>
       {result}
@@ -187,11 +181,11 @@ export function CodeBlock({ code, lang }: { code: string; lang: string }) {
       ? highlightPython(code)
       : code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   return (
-    <div className="my-4 overflow-hidden rounded-md border border-line">
-      <div className="flex items-center justify-between bg-panel px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-muted">
+    <div className="card my-5 overflow-hidden">
+      <div className="flex items-center justify-between border-b border-line px-4 py-2 text-xs font-medium text-muted">
         <span>{lang || "code"}</span>
       </div>
-      <pre className="overflow-x-auto bg-[var(--jv-code)] p-3 font-mono text-[13px] leading-6">
+      <pre className="overflow-x-auto bg-code/50 p-4 font-mono text-[13px] leading-6">
         <code dangerouslySetInnerHTML={{ __html: html }} />
       </pre>
     </div>

@@ -1,6 +1,6 @@
 # Joeven — Learn Autonomous AI Agents
 
-W3Schools-style academy for building **autonomous AI agents**. Live at [joeven.com](https://joeven.com).
+A guided academy for building **autonomous AI agents**. Live at [joeven.com](https://joeven.com).
 
 ## Curriculum
 

@@ -6,7 +6,7 @@ export const agents: TrackSource = {
   short: "Agents",
   tagline:
     "ReAct, plan-and-execute, reflection, memory, state machines, HITL, long-running agents, design patterns.",
-  color: "#04AA6D",
+  color: "#4c3dff",
   order: 10,
   lessons: [
     {

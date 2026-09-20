@@ -3,34 +3,30 @@ import Link from "next/link";
 import { tracks, stats } from "@/lib/curriculum";
 
 export const metadata: Metadata = {
-  title: "AI Agent Tutorials",
-  description: `Free tutorials covering Python, math, ML, LLMs, tools, RAG, and autonomous agents — ${stats.lessons} lessons.`,
+  title: "Curriculum",
+  description: `Guided tracks covering Python, math, ML, LLMs, tools, RAG, and autonomous agents — ${stats.lessons} lessons.`,
 };
 
 export default function TutorialsIndex() {
   return (
-    <main className="mx-auto max-w-6xl px-5 py-10">
-      <h1 className="text-4xl font-extrabold">Tutorials</h1>
-      <p className="mt-3 max-w-2xl text-lg text-muted">
-        {stats.lessons} lessons across {stats.tracks} tracks. Read them in
-        order the first time. Use the search bar when you need a single idea.
+    <main className="mx-auto max-w-5xl px-5 py-14">
+      <h1 className="font-display text-4xl tracking-tight md:text-5xl">Curriculum</h1>
+      <p className="mt-4 max-w-2xl text-lg leading-8 text-muted">
+        {stats.lessons} lessons in {stats.tracks} tracks. Take them in order the
+        first time. Search when you need a single idea.
       </p>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tracks.map((t) => (
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        {tracks.map((t, i) => (
           <Link
             key={t.slug}
             href={`/tutorials/${t.slug}`}
-            className="rounded-xl border border-line p-5 hover:border-jv"
+            className="card p-5 hover:border-jv/40"
           >
-            <div
-              className="mb-3 h-2 w-16 rounded-full"
-              style={{ background: t.color }}
-            />
-            <h2 className="text-xl font-bold">{t.title}</h2>
-            <p className="mt-2 text-sm text-muted">{t.tagline}</p>
-            <p className="mt-3 text-sm font-semibold text-jv-darker">
-              {t.lessons.length} lessons →
+            <p className="text-xs text-muted">
+              {String(i + 1).padStart(2, "0")} · {t.lessons.length} lessons
             </p>
+            <h2 className="mt-2 text-xl font-semibold">{t.title}</h2>
+            <p className="mt-2 text-sm leading-6 text-muted">{t.tagline}</p>
           </Link>
         ))}
       </div>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { AdSlot } from "@/components/AdSlot";
 import { CompleteToggle, NextPrev } from "@/components/NextPrev";
 import { LessonBlocks } from "@/components/LessonBlocks";
 import { Sidebar } from "@/components/Sidebar";
@@ -29,7 +28,7 @@ export async function generateMetadata({
   const lesson = getLesson(track, slug);
   if (!lesson) return { title: "Lesson" };
   return {
-    title: `${lesson.title} Tutorial`,
+    title: lesson.title,
     description: lesson.summary,
     alternates: {
       canonical: `${site.domain}/tutorials/${track}/${slug}`,
@@ -64,46 +63,47 @@ export default async function LessonPage({
   };
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="mx-auto flex max-w-6xl flex-col md:flex-row">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Sidebar track={track} current={slug} />
-      <article className="min-w-0 flex-1 px-4 py-8 md:px-10">
-        <p className="text-sm font-semibold text-muted">
-          <Link href="/tutorials" className="hover:underline">
-            Tutorials
-          </Link>{" "}
-          /{" "}
-          <Link href={`/tutorials/${track.slug}`} className="hover:underline">
+      <article className="min-w-0 flex-1 px-4 py-8 md:px-10 md:py-12">
+        <p className="text-sm text-muted">
+          <Link href="/tutorials" className="hover:text-ink">
+            Curriculum
+          </Link>
+          <span className="mx-2 text-line">/</span>
+          <Link href={`/tutorials/${track.slug}`} className="hover:text-ink">
             {track.title}
           </Link>
         </p>
-        <h1 className="mt-2 text-4xl font-extrabold tracking-tight">
+        <h1 className="font-display mt-3 text-4xl tracking-tight md:text-5xl">
           {lesson.title}
         </h1>
-        <p className="mt-3 max-w-2xl text-lg text-muted">{lesson.summary}</p>
-        <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted">
-          <span className="rounded-full bg-panel px-2 py-0.5 capitalize">
+        <p className="mt-4 max-w-xl text-lg leading-8 text-muted">
+          {lesson.summary}
+        </p>
+        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted">
+          <span className="rounded-full bg-code px-2.5 py-0.5 capitalize">
             {lesson.level}
           </span>
-          <span>{lesson.minutes} min read</span>
+          <span>{lesson.minutes} min</span>
           <span>
-            Lesson {lesson.order + 1} of {track.lessons.length}
+            {lesson.order + 1} / {track.lessons.length}
           </span>
           <CompleteToggle id={lesson.id} />
           {tryit && tryit.type === "tryit" && (
             <Link
               href={`/try/${track.slug}/${lesson.slug}`}
-              className="font-bold text-jv-darker"
+              className="font-medium text-jv-dark"
             >
-              Open playground →
+              Open full playground
             </Link>
           )}
         </div>
-        <AdSlot slot="banner" className="mt-6 max-w-[820px]" />
-        <div className="mt-6">
+        <div className="mt-8">
           <LessonBlocks blocks={lesson.blocks} quizPrefix={lesson.id} />
         </div>
         <NextPrev
@@ -113,9 +113,6 @@ export default async function LessonPage({
           next={next}
         />
       </article>
-      <div className="hidden w-[200px] shrink-0 p-4 xl:block">
-        <AdSlot />
-      </div>
     </div>
   );
 }

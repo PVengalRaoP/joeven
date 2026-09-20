@@ -5,7 +5,7 @@ export const start: TrackSource = {
   title: "Getting Started",
   short: "Start",
   tagline: "What autonomous agents are, how this academy works, and how to think in loops.",
-  color: "#04AA6D",
+  color: "#4c3dff",
   order: 1,
   lessons: [
     {
@@ -15,9 +15,9 @@ export const start: TrackSource = {
       minutes: 8,
       level: "beginner",
       md: `
-Joeven is a tutorial academy for **autonomous AI agents** — software that uses a language model as a brain, tools as hands, and a loop as a heartbeat.
+Joeven is a guided academy for **autonomous AI agents** — software that uses a language model as a brain, tools as hands, and a loop as a heartbeat.
 
-If you have used [W3Schools](https://www.w3schools.com), you already know the rhythm: short pages, live examples, Next / Previous, exercises, certificates. That is the product. The subject is different. Instead of HTML tags, you will master the stack that actually ships agents:
+The rhythm is simple: one idea, a live example, a short check, then the next page. The stack you will master is the one that actually ships agents:
 
 1. **Python** — the language of tools, APIs, tests, and orchestration
 2. **Mathematics** — vectors, probability, gradients, information
@@ -28,7 +28,7 @@ If you have used [W3Schools](https://www.w3schools.com), you already know the rh
 
 ## How a Joeven page works
 
-Every tutorial page is a single idea. Read it. Run the **Try it yourself** box in the browser (Python runs locally via Pyodide — no server, no API key). Answer the quiz. Click **Next**.
+Every lesson is a single idea. Read it. Run the **live Python** box in the browser (it runs locally via Pyodide — no server, no API key). Answer the check. Continue when you are ready.
 
 Your progress is stored in this browser. Complete track quizzes at 80%+ to unlock a **certificate** you can download.
 

@@ -28,12 +28,16 @@ export default async function ReferenceArticlePage({
   const r = references.find((x) => x.slug === slug);
   if (!r) notFound();
   return (
-    <main className="mx-auto max-w-[820px] px-5 py-10">
+    <main className="mx-auto max-w-[42rem] px-5 py-14">
       <p className="text-sm text-muted">
-        <Link href="/reference">Reference</Link> / {r.group}
+        <Link href="/reference" className="hover:text-ink">
+          Reference
+        </Link>
+        <span className="mx-2 text-line">/</span>
+        {r.group}
       </p>
-      <h1 className="mt-2 text-4xl font-extrabold">{r.title}</h1>
-      <p className="mt-3 text-lg text-muted">{r.summary}</p>
+      <h1 className="font-display mt-3 text-4xl tracking-tight">{r.title}</h1>
+      <p className="mt-3 text-lg leading-8 text-muted">{r.summary}</p>
       <div className="mt-6">
         <LessonBlocks blocks={parseMarkdown(r.md)} quizPrefix={`ref/${r.slug}`} />
       </div>

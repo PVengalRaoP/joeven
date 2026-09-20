@@ -3,19 +3,16 @@ export const site = {
   domain: "https://joeven.com",
   tagline: "Learn Autonomous AI Agents",
   description:
-    "Joeven is a W3Schools-style academy for autonomous AI agents. Learn Python, mathematics, machine learning, LLMs, tools, RAG, agent architectures, evals, and production — with live code, exercises, projects, and certificates.",
+    "Joeven is a guided academy for autonomous AI agents. Learn Python, mathematics, machine learning, LLMs, tools, RAG, agent architectures, evals, and production — with live code, exercises, projects, and certificates.",
   github: "https://github.com/PVengalRaoP/joeven",
   email: "hello@joeven.com",
 };
 
 export const nav = [
-  { href: "/tutorials", label: "Tutorials" },
-  { href: "/exercises", label: "Exercises" },
+  { href: "/tutorials", label: "Curriculum" },
   { href: "/projects", label: "Projects" },
-  { href: "/quiz", label: "Quizzes" },
-  { href: "/certificates", label: "Certificates" },
+  { href: "/exercises", label: "Practice" },
   { href: "/reference", label: "Reference" },
-  { href: "/jobs", label: "Jobs" },
 ];
 
 export const plans = [
@@ -27,7 +24,7 @@ export const plans = [
     cta: "Start learning",
     href: "/tutorials",
     features: [
-      "All core tutorials",
+      "All core lessons",
       "In-browser Python playground",
       "Exercises and 5 portfolio projects",
       "Track quizzes and certificates",
