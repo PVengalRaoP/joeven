@@ -20,7 +20,6 @@ type Ctx = ProgressState & {
   uncomplete: (id: string) => void;
   setQuiz: (id: string, score: number) => void;
   setName: (name: string) => void;
-  unlockPro: () => void;
   ready: boolean;
 };
 
@@ -60,10 +59,6 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     setState((s) => ({ ...s, name }));
   }, []);
 
-  const unlockPro = useCallback(() => {
-    setState((s) => ({ ...s, pro: true }));
-  }, []);
-
   const value = useMemo(
     () => ({
       ...state,
@@ -71,10 +66,9 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       uncomplete,
       setQuiz,
       setName,
-      unlockPro,
       ready,
     }),
-    [state, complete, uncomplete, setQuiz, setName, unlockPro, ready],
+    [state, complete, uncomplete, setQuiz, setName, ready],
   );
 
   return (

@@ -5,7 +5,7 @@ import { tracks } from "@/lib/curriculum";
 import { useRef } from "react";
 
 export default function CertificatesPage() {
-  const { quiz, name, setName, pro } = useProgress();
+  const { quiz, name, setName } = useProgress();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   function download(trackTitle: string, score: number) {
@@ -38,11 +38,6 @@ export default function CertificatesPage() {
       80,
       520,
     );
-    if (pro) {
-      ctx.fillStyle = "#4c3dff";
-      ctx.font = "bold 20px Georgia, serif";
-      ctx.fillText("JOEVEN PRO", 80, 700);
-    }
     const a = document.createElement("a");
     a.download = `joeven-${trackTitle.toLowerCase().replace(/\s+/g, "-")}.png`;
     a.href = canvas.toDataURL("image/png");

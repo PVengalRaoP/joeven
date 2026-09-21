@@ -1,7 +1,6 @@
 export type ProgressState = {
   completed: string[];
   quiz: Record<string, number>;
-  pro: boolean;
   name: string;
 };
 
@@ -10,7 +9,6 @@ const KEY = "joeven-progress-v1";
 export const emptyProgress = (): ProgressState => ({
   completed: [],
   quiz: {},
-  pro: false,
   name: "",
 });
 
@@ -23,7 +21,6 @@ export function loadProgress(): ProgressState {
     return {
       completed: parsed.completed ?? [],
       quiz: parsed.quiz ?? {},
-      pro: Boolean(parsed.pro),
       name: parsed.name ?? "",
     };
   } catch {

@@ -9,7 +9,7 @@ import { useProgress } from "./ProgressProvider";
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const { pro, completed } = useProgress();
+  const { completed } = useProgress();
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const [dark, setDark] = useState(false);
@@ -104,14 +104,6 @@ export function Header() {
               {completed.length} done
             </Link>
           )}
-          <Link
-            href="/pricing"
-            className={`hidden rounded-full px-3 py-1.5 text-sm font-semibold sm:inline ${
-              pro ? "border border-line text-ink" : "bg-ink text-white dark:bg-white dark:text-ink"
-            }`}
-          >
-            {pro ? "Pro" : "Go Pro"}
-          </Link>
           <button
             type="button"
             onClick={toggleDark}
@@ -154,9 +146,6 @@ export function Header() {
             </Link>
             <Link href="/quiz" className="rounded-xl px-3 py-3 text-base hover:bg-panel">
               Quizzes
-            </Link>
-            <Link href="/pricing" className="rounded-xl px-3 py-3 text-base hover:bg-panel">
-              Pricing
             </Link>
           </div>
         </div>

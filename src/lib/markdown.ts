@@ -1,4 +1,5 @@
 import type { Block, QuizOption } from "./types";
+import { parseViz } from "./viz";
 
 function escapeHtml(s: string): string {
   return s
@@ -87,6 +88,9 @@ export function parseMarkdown(md: string): Block[] {
       if (lang === "tryit") {
         const realLang = fence.split(/\s+/)[1] || "python";
         blocks.push({ type: "tryit", lang: realLang, code });
+      } else if (lang === "viz") {
+        const kind = fence.split(/\s+/)[1] || "plot";
+        blocks.push({ type: "viz", spec: parseViz(kind, code) });
       } else if (lang === "quiz") {
         const qLines = body.filter((l) => l.trim() !== "");
         const question = qLines[0] || "";

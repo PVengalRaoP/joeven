@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/quiz",
     "/certificates",
     "/reference",
-    "/pricing",
     "/jobs",
     "/about",
     "/path",

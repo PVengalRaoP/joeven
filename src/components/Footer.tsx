@@ -58,11 +58,6 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/pricing" className="hover:text-ink">
-                Pricing
-              </Link>
-            </li>
-            <li>
               <Link href="/jobs" className="hover:text-ink">
                 Jobs
               </Link>

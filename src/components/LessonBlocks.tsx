@@ -1,15 +1,19 @@
 import type { Block } from "@/lib/types";
 import { CodeBlock, TryIt } from "./TryIt";
 import { Quiz } from "./Quiz";
+import { LessonViz } from "./LessonViz";
 
 export function LessonBlocks({
   blocks,
   quizPrefix,
+  playgroundHref,
 }: {
   blocks: Block[];
   quizPrefix: string;
+  playgroundHref?: string;
 }) {
   let quizN = 0;
+  let tryitN = 0;
   return (
     <div className="prose-jv max-w-[820px]">
       {blocks.map((b, i) => {
@@ -35,8 +39,18 @@ export function LessonBlocks({
           );
         if (b.type === "code")
           return <CodeBlock key={i} code={b.code} lang={b.lang} />;
-        if (b.type === "tryit")
-          return <TryIt key={i} code={b.code} lang={b.lang} />;
+        if (b.type === "tryit") {
+          tryitN += 1;
+          return (
+            <TryIt
+              key={i}
+              code={b.code}
+              lang={b.lang}
+              fullHref={tryitN === 1 ? playgroundHref : undefined}
+            />
+          );
+        }
+        if (b.type === "viz") return <LessonViz key={i} spec={b.spec} />;
         if (b.type === "quiz") {
           quizN += 1;
           return (

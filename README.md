@@ -37,7 +37,6 @@ The app is a Next.js site. Production is intended for **Vercel** with the custom
 
 Optional env:
 
-- `NEXT_PUBLIC_STRIPE_PRICE_PRO` — live Pro checkout
 - AdSense client id — swap the `AdSlot` placeholder
 
 ## License

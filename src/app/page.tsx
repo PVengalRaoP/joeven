@@ -136,8 +136,8 @@ export default function HomePage() {
               d: "Every core lesson, playground, and project. No drip-feed, no fake timer.",
             },
             {
-              t: "Pro is optional",
-              d: "Hide partner slots and add a Pro badge to certificates. $12 / month.",
+              t: "Certificates in the browser",
+              d: "Pass a track quiz at 80%+ and download a PNG. No account required.",
             },
             {
               t: "Jobs & partners",
@@ -150,8 +150,8 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-        <Link href="/pricing" className="btn mt-8">
-          See plans
+        <Link href="/tutorials" className="btn mt-8">
+          Browse the curriculum
         </Link>
       </section>
     </main>

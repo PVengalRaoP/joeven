@@ -19,6 +19,8 @@ export type TrackSource = {
   lessons: RawLesson[];
 };
 
+import type { VizSpec } from "./viz";
+
 export type QuizOption = { text: string; correct: boolean };
 
 export type Block =
@@ -27,6 +29,7 @@ export type Block =
   | { type: "ul" | "ol"; items: string[] }
   | { type: "code"; lang: string; code: string }
   | { type: "tryit"; lang: string; code: string }
+  | { type: "viz"; spec: VizSpec }
   | {
       type: "quiz";
       question: string;

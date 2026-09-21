@@ -1,7 +1,3 @@
-"use client";
-
-import { useProgress } from "./ProgressProvider";
-
 export function AdSlot({
   slot = "sidebar",
   className = "",
@@ -9,9 +5,6 @@ export function AdSlot({
   slot?: "sidebar" | "inarticle" | "banner";
   className?: string;
 }) {
-  const { pro } = useProgress();
-  if (pro) return null;
-
   const sizes =
     slot === "banner"
       ? "min-h-[72px]"
@@ -26,13 +19,9 @@ export function AdSlot({
       </p>
       <p className="mt-2 text-sm font-semibold">Tools for people shipping agents</p>
       <p className="mt-1 text-xs leading-5 text-muted">
-        Sponsor a lesson from $199 / week.{" "}
+        Sponsor a lesson.{" "}
         <a className="underline decoration-line underline-offset-2" href="/advertise">
           Advertise
-        </a>
-        {" · "}
-        <a className="underline decoration-line underline-offset-2" href="/pricing">
-          Hide with Pro
         </a>
       </p>
     </aside>

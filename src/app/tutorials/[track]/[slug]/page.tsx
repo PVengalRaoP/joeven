@@ -94,17 +94,17 @@ export default async function LessonPage({
             {lesson.order + 1} / {track.lessons.length}
           </span>
           <CompleteToggle id={lesson.id} />
-          {tryit && tryit.type === "tryit" && (
-            <Link
-              href={`/try/${track.slug}/${lesson.slug}`}
-              className="font-medium text-jv-dark"
-            >
-              Open full playground
-            </Link>
-          )}
         </div>
         <div className="mt-8">
-          <LessonBlocks blocks={lesson.blocks} quizPrefix={lesson.id} />
+          <LessonBlocks
+            blocks={lesson.blocks}
+            quizPrefix={lesson.id}
+            playgroundHref={
+              tryit && tryit.type === "tryit"
+                ? `/try/${track.slug}/${lesson.slug}`
+                : undefined
+            }
+          />
         </div>
         <NextPrev
           trackSlug={track.slug}

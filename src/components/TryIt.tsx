@@ -41,11 +41,13 @@ export function TryIt({
   lang = "python",
   tall = false,
   split = false,
+  fullHref,
 }: {
   code: string;
   lang?: string;
   tall?: boolean;
   split?: boolean;
+  fullHref?: string;
 }) {
   const original = useRef(code.trimEnd());
   const [value, setValue] = useState(code.trimEnd());
@@ -150,9 +152,16 @@ export function TryIt({
 
   return (
     <div className="card my-6 overflow-hidden">
-      <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
+      <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2.5">
         <span className="text-sm font-medium">Live Python</span>
-        <span className="text-xs text-muted">{lang}</span>
+        <span className="flex items-center gap-3 text-xs text-muted">
+          {fullHref ? (
+            <a href={fullHref} className="text-muted! no-underline! hover:text-ink!">
+              Open full playground
+            </a>
+          ) : null}
+          <span>{lang}</span>
+        </span>
       </div>
       {editor}
       <div className="flex flex-wrap gap-2 border-t border-line px-4 py-3">
